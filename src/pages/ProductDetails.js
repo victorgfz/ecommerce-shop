@@ -2,6 +2,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import { ProductContext } from '../contexts/ProductContext';
 import { CartContext } from '../contexts/CartContext';
+import Head from '../components/Head';
 
 const ProductDetails = () => {
   const params = useParams()
@@ -10,7 +11,9 @@ const ProductDetails = () => {
   const product = products.find(item => item.id === +params.id)
 
 
-  return <div className='bg-white min-h-screen overflow-hidden flex items-center justify-center'>
+  return <>
+    <Head item={product.title} />
+    <div className='bg-white min-h-screen overflow-hidden flex items-center justify-center'>
     <div className='container flex flex-col lg:flex-row items-center justify-center gap-5 my-[72px] lg:my-0'>
     <div className='p-5 bg-white border-[1px]border-gray-200'>
       <img className='max-w-full max-h-[600px] h-full' src={product.image} title={product.title} alt={product.title} />
@@ -23,7 +26,8 @@ const ProductDetails = () => {
     </div>
    </div>
     
-    </div>;
+    </div>
+  </> ;
 };
 
 export default ProductDetails;
